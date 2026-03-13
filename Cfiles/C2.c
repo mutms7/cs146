@@ -41,13 +41,35 @@ int sumInt(int acc) {
 }
 
 void printdectohex(int num, int pow) {
-    int remainder = num % (pow*16);
-    int digit;
+    int remainder = num % pow;
+    //printf("%d\n", pow);
+    //printf("%d\n", num);
+    int digitpart = num - num%pow;
+    int digit = digitpart/pow;
+    if (num == 0) {
+        printf("0");
+    } else if(1 <= digit && digit <= 9) {
+        printf("%d", digit);
+    } else if (10 <= digit && digit <= 15) {
+        char hex = 'a'+digit-10;
+        //printf("   %d    ", digit);
+        printf("%c", hex);
+    } else {
+        
+    }
+    
+    if (pow != 1) {
+        printdectohex(remainder, pow/16);
+    }
 }
 
 int main() {
-    //printdectohex(sumInt(0), 1);
-    printf("%d", 16*16*16*16*16*16*16);
+    int sum = sumInt(0);
+    if (sum == 0) {
+        printf("0");
+    } else {
+    printdectohex(sum, 16*16*16*16*16*16*16);
+    }
     printf("\n");
     return 0;
 }

@@ -2,37 +2,58 @@
 #include <stdio.h>
 
 int mem[100];
-/* 
-current value
-current value copy
-reverse palin accum, 
-*/
+
 
 void printNums(int m, int n) {
+    if (m > n) 
+        goto C;
+    
+
+    A:
     mem[0] = m;
     goto N;
+
+    C:
+    mem[0] = n;
+    n = m;
+    m = mem[0];
+    goto A;
     
     N: 
     mem[1] = mem[0];
     goto R;
     
     R: 
-    mem[2] = mem[2]*10 + mem[1]%10; // 123, 654 -> 6543
-    mem[1] = (mem[1]-mem[1]%10)/10; // 123 -> 12
-    if (mem[1] == 0) {
+    mem[2] = mem[2]*10 + mem[1]%10; 
+    mem[1] = (mem[1]-mem[1]%10)/10; 
+    if (mem[1] == 0) 
         goto R1;
-    }
+    
+
     goto R;
 
     R1:
-    if (mem[2] == mem[1]) {
-        goto P;
-    }
+    if (mem[2] == mem[0]) 
+        goto Sm;
+    
     goto Add;
 
+    Sm:
+    mem[2] = 2;
+    goto S;
 
+    S:
+    if (mem[0]%(mem[2]*mem[2]) == 0) 
+        goto Add;
     
+    goto S1;
 
+    S1:
+    if (mem[2]*mem[2] > mem[0]) 
+        goto P;
+    
+    mem[2]++;
+    goto S;
 
 
     P: 
@@ -41,21 +62,10 @@ void printNums(int m, int n) {
 
 
     Add:
-    if (mem[0] == n+1) {
+    if (mem[0] >= n) 
         return;
-    }
+    
     mem[0]++;
+    mem[2] = 0;
     goto N;
-}
-
-int main() {
-
-  int m, n;
-
-  while (scanf("%d %d", &m, &n) == 2) {
-
-    printNums(m, n);
-
-  }
-
 }

@@ -3,7 +3,10 @@
 int lowsearch(int A[], int key, int n) {
     //assume: A[0] <= key <= A[n-1]
     int low = 0;
-    int high = n;
+    int high = n-1;
+    if (A[n-1] < key) {
+        return n;
+    }
     // low = 0, high = n
     // let i be the minimum index such that key <= A[i]
 
@@ -37,6 +40,6 @@ int lowsearch(int A[], int key, int n) {
 }
 
 void main() {
-    int arr[] = {};
-    printf("\n%d\n", lowsearch(arr, 0, 0));
+    int arr[] = {1, 1, 3, 3, 4, 4, 6};
+    printf("\n%d\n", lowsearch(arr, 6, 7));
 }

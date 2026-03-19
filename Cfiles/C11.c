@@ -1,4 +1,3 @@
-#include <stdio.h>
 
 int lowsearch(int A[], int key, int n) {
     //assume: A[0] <= key <= A[n-1]
@@ -36,9 +35,4 @@ int lowsearch(int A[], int key, int n) {
     // therefore low = i
 
     return low;
-}
-
-void main() {
-    int arr[] = {2, 3};
-    printf("\n%d\n", lowsearch(arr, 1, 2));
 }

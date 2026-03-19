@@ -16,10 +16,9 @@ int lowsearch(int A[], int key, int n) {
         // mid = (low+high)/2, low <= mid < high
         if (key < A[mid]) {
             // key < A[mid] -> 
-            // i < mid -> 
-            // i <= mid-1
+            // i <= mid -> 
             high = mid;
-            // low <= i <= high (mid-1)
+            // low <= i <= high (mid)
         } else if (key > A[mid]) {
             // key > A[mid] -> 
             // i > mid -> 

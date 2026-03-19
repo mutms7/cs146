@@ -40,6 +40,6 @@ int lowsearch(int A[], int key, int n) {
 }
 
 void main() {
-    int arr[] = {1, 1, 3, 3, 4, 4, 6};
-    printf("\n%d\n", lowsearch(arr, 6, 7));
+    int arr[] = {2, 3};
+    printf("\n%d\n", lowsearch(arr, 1, 2));
 }
